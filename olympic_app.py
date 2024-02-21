@@ -202,7 +202,7 @@ def main():
         st.plotly_chart(fig)
 
         Events_over_time= data_over_time(df,'Event') 
-        fig2  = px.line(Events_over_time, x = 'region', y ='count')
+        fig2  = px.line(Events_over_time, x = 'Event', y ='count')
         st.header("Event over the years")
         st.plotly_chart(fig2)
 
