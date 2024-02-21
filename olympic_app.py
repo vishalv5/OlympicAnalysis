@@ -56,14 +56,18 @@ def data_over_time(df, col):
     nations_over_time.rename(columns={'index': 'Editions', 'Year': col}, inplace=True)
     return nations_over_time
 
+
 def most_successful(df, sport):
     temp_df = df.dropna(subset=['Medal'])
     
-    if sport !='Overall':
-        temp_df= temp_df[temp_df["Sport"]==sport]
-    x = temp_df['Name'].value_counts().reset_index().head(10).merge(df, left_on='index',right_on='Name', how='left')[['index','Name_x','Sport','region']].drop_duplicates('index')
-    x.rename(columns ={'index':'Name', 'Name_x':'Medal', 'region' : 'Countries'}, inplace = True)
-    return x 
+    if sport != 'Overall':
+        temp_df = temp_df[temp_df["Sport"] == sport]
+    
+    x = temp_df['Name'].value_counts().reset_index().head(10)
+    x = x.merge(df, left_on='index', right_on='Name', how='left')[['index', 'Name_x', 'Sport', 'region']].drop_duplicates('index')
+    x.rename(columns={'index': 'Name', 'Name_x': 'Medal', 'region': 'Countries'}, inplace=True)
+    
+    return x
 
 def yearwise_medal_tally(df,country):
     temp_df=df.dropna(subset = ['Medal'])
