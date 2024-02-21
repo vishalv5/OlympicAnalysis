@@ -207,12 +207,12 @@ def main():
         st.plotly_chart(fig2)
 
         Athletes_over_time=data_over_time(df,'Name') 
-        fig3  = px.line(Athletes_over_time, x = 'region', y ='count')
+        fig3  = px.line(Athletes_over_time, x ='Name', y ='count')
         st.header("Athletes over the years")
         st.plotly_chart(fig3)
 
         sports_over_time=data_over_time(df,'Sport') 
-        fig4  = px.line(sports_over_time, x = 'region', y ='count')
+        fig4  = px.line(sports_over_time, x = 'Sport', y ='count')
         st.header("Sports over the years")
         st.plotly_chart(fig4)
 
